@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nHouse - About Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Old Standard TT', serif;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      height: 100%;
+      overflow: auto;
+    }
+
+    /* Fullscreen Background Image */
+    .fullscreen-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Ensures the image stays behind all content */
+    }
+
+    /* Glassmorphic Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 5px 20px;
+      border-radius: 10px;
+    }
+
+    .logo {
+      font-family: 'Old Standard TT', serif;
+      font-size: 24px;
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    .buttons a.active {
+      background-color: rgba(200, 200, 200, 0.3);
+      border-radius: 5px;
+    }
+
+    .buttons a:hover {
+      background-color: rgba(200, 200, 200, 0.2);
+      border-radius: 5px;
+    }
+
+    /* About Us Content */
+.hero {
+  padding: 50px 20px;  /* Increase top padding to make it uniform */
+  text-align: left;
+  color: #fff;
+  width: 100%;
+  line-height: 1.5;
+}
+
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 20px;  /* Add consistent margin */
+  margin-bottom: 20px;
+}
+
+
+    h3 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(5px);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .separator {
+      border-top: 1px solid #ddd;
+      margin: 10px 0;
+    }
+
+    .material-icons {
+      font-size: 24px;
+      color: #777; /* Light color for the caret */
+      transition: transform 0.3s ease;
+    }
+
+    .section-content {
+      padding-top: 10px;
+      display: none;
+      overflow: hidden;
+    }
+
+    .active .material-icons {
+      transform: rotate(180deg);
+    }
+
+    .active .section-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fullscreen Background Image -->
+  <img src="your-image-file2.jpg" alt="Background Image" class="fullscreen-image">
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">nHouse</a>
+      <div class="buttons">
+        <a href="buy.html">Buy</a>
+        <a href="sell.html">Sell</a>
+        <a href="about.html" class="active">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- About Us Content -->
+  <div class="hero">
+    <h1>Learn more and stay informed!</h1>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h3>Why we do</h3>
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="section-content">
+        <p>nHouse is dedicated to making property selling simple and accessible for everyone. Our mission is to provide a seamless platform that connects sellers with potential buyers in the easiest way possible.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h3>How we help</h3>
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="section-content">
+        <p>We provide an intuitive platform where you can list your property, showcase it with photos and descriptions, and get in touch with interested buyers. We make the selling process easy, fast, and secure.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h3>What we do</h3>
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="section-content">
+        <p>We have a dedicated team of experts in real estate, technology, and customer service. Our goal is to ensure you have the best experience while using nHouse.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h3>Be a part of us</h3>
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="section-content">
+        <p>If you have any questions or need support, feel free to reach out to us at any time. We're here to help you with the selling process and ensure you have the best experience possible with nHouse.</p>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h3>How we earn</h3>
+        <span class="material-icons">expand_more</span>
+      </div>
+      <div class="section-content">
+        <p>It's very simple.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSection(element) {
+      // Close all sections first
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        if (section !== element.closest('.section')) {
+          section.classList.remove('active');
+        }
+      });
+
+      // Toggle the clicked section
+      const section = element.closest('.section');
+      section.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
