@@ -1,0 +1,320 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nHouse - Listings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
+  <style>
+    /* CSS remains unchanged */
+    body {
+      font-family: 'Old Standard TT', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 5px 20px;
+      border-radius: 10px;
+    }
+
+    .logo {
+      font-family: 'Old Standard TT', serif;
+      font-size: 24px;
+      color: #333;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    .buttons a.active {
+      background-color: rgba(200, 200, 200, 0.3);
+      border-radius: 5px;
+    }
+
+    .buttons a:hover {
+      background-color: rgba(200, 200, 200, 0.2);
+      border-radius: 5px;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .image-card {
+      width: 300px;
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 5px;
+      position: relative;
+    }
+
+    .carousel img {
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .dots-container {
+      position: absolute;
+      top: 350px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      background-color: rgba(205, 205, 205, 0.7);
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: white;
+    }
+
+    .description {
+      padding: 15px;
+    }
+
+    .description h3 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+    }
+
+    .description p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .more-info {
+      display: none;
+      font-size: 14px;
+      color: #555;
+      margin-top: 15px;
+    }
+
+    .more-info h4 {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .more-info div {
+      margin-top: 5px;
+    }
+
+    .separator {
+      border-top: 1px solid #ddd;
+      margin: 10px 0;
+    }
+
+    .more-info div p, .more-info div span {
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    #showMore, #contactNow {
+      text-decoration: none; /* Removed underline */
+      color: #007BFF;
+      font-size: 14px;
+    }
+
+    .show-more, .contact-now {
+      text-decoration: none; /* Removed underline */
+      color: #007BFF;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .image-card {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .image-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">nHouse</a>
+      <div class="buttons">
+        <a href="buy.html" class="active">Buy</a>
+        <a href="sell.html">Sell</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <section id="properties" class="content">
+    <!-- Property Cards will be inserted dynamically -->
+  </section>
+  <p style="text-align: center; margin: 10px 0;">*new properties uploading soon!</p>
+
+<script>
+  // Fetch properties from the JSON file
+  async function fetchProperties() {
+    try {
+      const response = await fetch('properties.json'); // Ensure the path is correct
+      const properties = await response.json(); // Get the properties from the JSON file
+      renderProperties(properties); // Render the properties dynamically
+      attachEventListeners(properties); // Attach event listeners after properties are rendered
+    } catch (error) {
+      console.error('Error fetching properties:', error);
+    }
+  }
+
+  // Shuffle Properties (Randomize)
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  // Render Properties on the page
+  function renderProperties(properties) {
+    const propertiesContainer = document.getElementById('properties');
+    propertiesContainer.innerHTML = ''; // Clear previous content
+    shuffle(properties); // Shuffle the properties array
+
+    properties.forEach((property) => {
+      const card = document.createElement('div');
+      card.className = 'image-card';
+      card.innerHTML = `
+        <div class="carousel">
+          ${property.images.map(img => `<img src="${img}" alt="${property.location}">`).join('')}
+        </div>
+        <div class="dots-container"></div>
+        <div class="description">
+          <h3>${property.location}</h3>
+          <p>${property.details}</p>
+          <p>${property.price}</p>
+          <div class="separator"></div>
+          <div class="more-info">
+            <h4>Good to know</h4>
+            <div>${property.moreInfo.goodToKnow.map(info => `<p>${info}</p>`).join('')}</div>
+            <div class="separator"></div>
+            <h4>What you get</h4>
+            <div>${property.moreInfo.amenities.map(amenity => `<p>${amenity}</p>`).join('')}</div>
+            <div class="separator"></div>
+            <h4>Your nearby areas</h4>
+            <div>${property.moreInfo.nearby.map(area => `<p>${area}</p>`).join('')}</div>
+            <div class="separator"></div>
+            <h4>Important legals</h4>
+            <div>${property.moreInfo.legals.map(legals => `<p>${legals}</p>`).join('')}</div>
+          </div>
+          <div class="buttons-container">
+            <a href="javascript:void(0);" class="show-more" data-id="${property.id}">Show more</a>
+            <a href="javascript:void(0);" class="contact-now" style="display: none;" data-id="${property.id}">Contact Now</a>
+          </div>
+        </div>
+      `;
+      propertiesContainer.appendChild(card);
+    });
+  }
+
+  // Attach Event Listeners to the 'Show More' and 'Contact Now' buttons
+  function attachEventListeners(properties) {
+    const showMoreLinks = document.querySelectorAll('.show-more');
+    const contactNowLinks = document.querySelectorAll('.contact-now');
+
+    showMoreLinks.forEach((link) => {
+      link.addEventListener('click', function () {
+        const moreInfo = this.closest('.description').querySelector('.more-info');
+        const contactNow = this.closest('.description').querySelector('.contact-now');
+        const isExpanded = moreInfo.style.display === 'block';
+
+        moreInfo.style.display = isExpanded ? 'none' : 'block';
+        contactNow.style.display = isExpanded ? 'none' : 'inline-block';
+        this.textContent = isExpanded ? 'Show more' : 'Show less';
+      });
+    });
+
+    contactNowLinks.forEach((link) => {
+      link.addEventListener('click', function () {
+        const propertyId = this.dataset.id;
+        const property = properties.find(p => p.id == propertyId);
+
+        if (property) {
+          const message = `
+            Hi, I'm interested in the property at ${property.location}.
+            Details: ${property.details}
+            Price: ${property.price}
+
+            Property link: ${window.location.href}#${propertyId}
+          `.trim();
+
+          const whatsappLink = `https://wa.me/919014651031?text=${encodeURIComponent(message)}`;
+          window.open(whatsappLink, '_blank');
+        } else {
+          console.error('Property not found:', propertyId);
+        }
+      });
+    });
+  }
+
+  // Initialize
+  fetchProperties(); // Call the fetch function to get the properties
+</script>
