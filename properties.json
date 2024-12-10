@@ -1,56 +1,14 @@
-[
+  [
   {
     "id": 1,
     "location": "Happy Avenue, Injapur",
     "details": "5BHK • 7Bath • 1647Sft",
     "price": "2.5Cr",
-    "images": ["ppi/p1.1.jpg", "ppi/p1.2.jpg", "ppi/p1.3.jpg"],
+    "images": ["ppi/p1.1.jpg", "ppi/p1.2.jpg", "ppi/p1.3.jpg", "ppi/p1.4.jpg", "ppi/p1.5.jpg", "ppi/p1.6.jpg", "ppi/p1.7.jpg", "ppi/p1.8.jpg", "ppi/p1.9.jpg"]
     "moreInfo": {
       "goodToKnow": ["Ready to move", "G+1 ind. house", "East facing", "Two parking"],
-      "amenities": ["High ventilation", "Good light", "Spacious road"],
-      "nearby": ["Supermarket (500 m)", "Delhi Public School (1 km)"],
-      "legals": ["Rera approved", "Hydra safe"]
-    }
-  },
-  
-  {
-    "id": 1,
-    "location": "Happy Avenue, Injapur",
-    "details": "5BHK • 7Bath • 1647Sft",
-    "price": "2.5Cr",
-    "images": ["ppi/p1.1.jpg", "ppi/p1.2.jpg", "ppi/p1.3.jpg"],
-    "moreInfo": {
-      "goodToKnow": ["Ready to move", "G+1 ind. house", "East facing", "Two parking"],
-      "amenities": ["High ventilation", "Good light", "Spacious road"],
-      "nearby": ["Supermarket (500 m)", "Delhi Public School (1 km)"],
-      "legals": ["Rera approved", "Hydra safe"]
-    }
-  },
-  
-  {
-    "id": 1,
-    "location": "Happy Avenue, Injapur",
-    "details": "5BHK • 7Bath • 1647Sft",
-    "price": "2.5Cr",
-    "images": ["ppi/p1.1.jpg", "ppi/p1.2.jpg", "ppi/p1.3.jpg"],
-    "moreInfo": {
-      "goodToKnow": ["Ready to move", "G+1 ind. house", "East facing", "Two parking"],
-      "amenities": ["High ventilation", "Good light", "Spacious road"],
-      "nearby": ["Supermarket (500 m)", "Delhi Public School (1 km)"],
-      "legals": ["Rera approved", "Hydra safe"]
-    }
-  },
-  
-  {
-    "id": 2,
-    "location": "Gachibowli, Hyderabad",
-    "details": "3BHK • 3Bath • 1800Sft",
-    "price": "3.0Cr",
-    "images": ["ppi/p2.1.jpg", "ppi/p2.2.jpg", "ppi/p2.3.jpg"],
-    "moreInfo": {
-      "goodToKnow": ["Ready to move", "5th floor", "East facing", "Two parking"],
-      "amenities": ["Pool", "Gym", "Badminton court"],
-      "nearby": ["Supermarket (700 m)", "School (1.5 km)"],
+      "amenities": ["high ventilation", "Good light", "Spacious road"],
+      "nearby": ["Supermarket (500 m)", "Delhi public School (1 km)"],
       "legals": ["Rera approved", "Hydra safe"]
     }
   },
@@ -64,33 +22,8 @@
       "goodToKnow": ["Ready to move", "5th floor", "East facing", "Two parking"],
       "amenities": ["Pool", "Gym", "Badminton court"],
       "nearby": ["Supermarket (700 m)", "School (1.5 km)"],
-      "legals": ["Rera approved", "Hydra safe"]
-    }
-  },
-  {
-    "id": 2,
-    "location": "Gachibowli, Hyderabad",
-    "details": "3BHK • 3Bath • 1800Sft",
-    "price": "3.0Cr",
-    "images": ["ppi/p2.1.jpg", "ppi/p2.2.jpg", "ppi/p2.3.jpg"],
-    "moreInfo": {
-      "goodToKnow": ["Ready to move", "5th floor", "East facing", "Two parking"],
-      "amenities": ["Pool", "Gym", "Badminton court"],
-      "nearby": ["Supermarket (700 m)", "School (1.5 km)"],
-      "legals": ["Rera approved", "Hydra safe"]
-    }
-  },
-  {
-    "id": 3,
-    "location": "Gachibowli, Hyderabad",
-    "details": "3BHK • 3Bath • 1800Sft",
-    "price": "3.5Cr",
-    "images": ["ppi/p3.1.jpg", "ppi/p3.2.jpg", "ppi/p3.3.jpg"],
-    "moreInfo": {
-      "goodToKnow": ["Ready to move", "5th floor", "East facing", "Two parking"],
-      "amenities": ["Pool", "Gym", "Badminton court"],
-      "nearby": ["Supermarket (700 m)", "School (2 km)"],
       "legals": ["Rera approved", "Hydra safe"]
     }
   }
 ]
+
